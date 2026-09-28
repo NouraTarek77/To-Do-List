@@ -1,0 +1,1218 @@
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #e75480;
+    --light-pink: #ffe0ea;
+    --blue: #5b9bd5;
+    --light-blue: #dff6ff;
+    --dark-blue: #357ca5;
+    --white: #ffffff;
+    --text: #333333;
+    --gray: #718096;
+    --green: #43a047;
+    --red: #e53935;
+}
+
+/* =========================
+   Body
+========================= */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(231, 84, 128, 0.18), transparent 25%),
+        radial-gradient(circle at 90% 10%, rgba(91, 155, 213, 0.2), transparent 25%),
+        radial-gradient(circle at 80% 90%, rgba(231, 84, 128, 0.12), transparent 30%),
+        linear-gradient(135deg, #dff6ff, #fce4ec);
+
+    background-attachment: fixed;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Decorative floating shapes */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+body::before {
+    width: 180px;
+    height: 180px;
+    top: 8%;
+    left: -70px;
+    background: rgba(231, 84, 128, 0.14);
+    animation: floatShape 7s ease-in-out infinite;
+}
+
+body::after {
+    width: 220px;
+    height: 220px;
+    right: -90px;
+    bottom: 5%;
+    background: rgba(91, 155, 213, 0.15);
+    animation: floatShapeReverse 9s ease-in-out infinite;
+}
+
+@keyframes floatShape {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(12deg);
+    }
+}
+
+@keyframes floatShapeReverse {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(25px) rotate(-12deg);
+    }
+}
+
+/* =========================
+   Main App
+========================= */
+
+.app {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+}
+
+/* =========================
+   Header
+========================= */
+
+.header {
+    text-align: center;
+    margin: 10px 0 8px;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-transform: capitalize;
+
+    background: linear-gradient(
+        135deg,
+        #e75480,
+        #5b9bd5
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation: titleAppear 0.8s ease;
+}
+
+@keyframes titleAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-desc {
+    text-align: center;
+    margin: 0 0 15px;
+    font-size: 19px;
+    color: var(--dark-blue);
+    line-height: 1.6;
+}
+
+/* =========================
+   Task Count
+========================= */
+
+.task-count {
+    width: fit-content;
+    margin: 0 auto 35px;
+    padding: 9px 20px;
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    color: var(--pink);
+    font-weight: bold;
+
+    box-shadow:
+        0 8px 25px rgba(91, 155, 213, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s ease;
+}
+
+.task-count:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 30px rgba(231, 84, 128, 0.18);
+}
+
+/* =========================
+   Form
+========================= */
+
+.task-form {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto 45px;
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 50px rgba(91, 155, 213, 0.18);
+
+    backdrop-filter: blur(18px);
+
+    animation: formAppear 0.8s ease;
+}
+
+@keyframes formAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-form:hover {
+    box-shadow:
+        0 25px 60px rgba(91, 155, 213, 0.22);
+}
+
+/* =========================
+   Form Title
+========================= */
+
+.form-title {
+    text-align: center;
+    margin: 0 0 28px;
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--pink);
+    text-transform: capitalize;
+}
+
+/* =========================
+   Inputs
+========================= */
+
+.form-input {
+    margin-block: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-input label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+.form-input input,
+.form-input textarea,
+.form-input select {
+    width: 100%;
+    padding: 13px 15px;
+
+    border: 2px solid transparent;
+    border-radius: 13px;
+
+    outline: none;
+
+    background: rgba(248, 253, 255, 0.95);
+
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(91, 155, 213, 0.12);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.form-input textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-input input:hover,
+.form-input textarea:hover,
+.form-input select:hover {
+    border-color: rgba(91, 155, 213, 0.35);
+}
+
+.form-input input:focus,
+.form-input textarea:focus,
+.form-input select:focus {
+    border-color: #e88bb0;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(232, 139, 176, 0.13),
+        0 8px 20px rgba(91, 155, 213, 0.08);
+
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Validation
+========================= */
+
+.task-title-warning,
+.task-desc-warning {
+    display: none;
+
+    padding: 10px 13px;
+    margin-top: -8px;
+    margin-bottom: 12px;
+
+    background: rgba(255, 224, 234, 0.85);
+    color: #d6336c;
+
+    border: 1px solid #f3a6bd;
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    animation: warningAppear 0.3s ease;
+}
+
+@keyframes warningAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.form-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 28px;
+}
+
+.btn {
+    flex: 1;
+
+    padding: 13px 18px;
+
+    border: none;
+    border-radius: 13px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: white;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* Save */
+
+.save {
+    background: linear-gradient(
+        135deg,
+        #75c9ed,
+        #5b9bd5
+    );
+
+    box-shadow:
+        0 8px 20px rgba(91, 155, 213, 0.25);
+}
+
+.save:hover {
+    box-shadow:
+        0 12px 28px rgba(91, 155, 213, 0.35);
+    filter: brightness(1.04);
+}
+
+/* Cancel */
+
+.cancel {
+    background: linear-gradient(
+        135deg,
+        #f29ab6,
+        #e75480
+    );
+
+    box-shadow:
+        0 8px 20px rgba(231, 84, 128, 0.22);
+}
+
+.cancel:hover {
+    box-shadow:
+        0 12px 28px rgba(231, 84, 128, 0.32);
+    filter: brightness(1.04);
+}
+
+/* =========================
+   Tasks Section
+========================= */
+
+.tasks-title {
+    text-align: center;
+    margin: 0 0 25px;
+
+    color: var(--dark-blue);
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.tasks-title::after {
+    content: "";
+    display: block;
+
+    width: 55px;
+    height: 4px;
+
+    margin: 10px auto 0;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        var(--pink),
+        var(--blue)
+    );
+}
+
+/* =========================
+   Tasks Container
+========================= */
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+/* =========================
+   No Tasks
+========================= */
+
+.no-tasks {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 30px auto;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    color: var(--gray);
+
+    border: 2px dashed rgba(91, 155, 213, 0.35);
+    border-radius: 20px;
+
+    font-size: 18px;
+
+    backdrop-filter: blur(10px);
+
+    animation: emptyAppear 0.5s ease;
+}
+
+@keyframes emptyAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   Task Card
+========================= */
+
+.task-item {
+    width: 100%;
+
+    padding: 22px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-left: 5px solid #e88bb0;
+
+    border-radius: 19px;
+
+    box-shadow:
+        0 10px 25px rgba(91, 155, 213, 0.12);
+
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+    animation: cardAppear 0.5s ease both;
+}
+
+.task-item::before {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    right: -40px;
+    top: -40px;
+
+    border-radius: 50%;
+
+    background: rgba(231, 84, 128, 0.07);
+
+    transition: 0.4s ease;
+}
+
+.task-item:hover::before {
+    transform: scale(1.7);
+}
+
+.task-item:hover {
+    transform: translateY(-7px);
+
+    border-left-color: var(--pink);
+
+    box-shadow:
+        0 18px 35px rgba(91, 155, 213, 0.2);
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   Task Content
+========================= */
+
+.task-item-title {
+    margin: 0 0 10px;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    color: var(--pink);
+
+    word-break: break-word;
+}
+
+.task-item-desc {
+    margin-bottom: 17px;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    color: #667788;
+
+    word-break: break-word;
+}
+
+/* =========================
+   Priority
+========================= */
+
+.task-item-periority {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 13px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    transition: 0.25s ease;
+}
+
+.task-item-periority:hover {
+    transform: scale(1.05);
+}
+
+.High {
+    background: #ffd6e2;
+    color: #d6336c;
+}
+
+.Medium {
+    background: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+.Low {
+    background: #d8f5e5;
+    color: #27804b;
+}
+
+/* =========================
+   Task Actions
+========================= */
+
+.task-actions {
+    display: flex;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.edit-btn,
+.delete-btn {
+    border: none;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+    font-size: 13px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.edit-btn {
+    background: linear-gradient(
+        135deg,
+        #75c9ed,
+        #5b9bd5
+    );
+
+    box-shadow:
+        0 5px 12px rgba(91, 155, 213, 0.2);
+}
+
+.delete-btn {
+    background: linear-gradient(
+        135deg,
+        #f29ab6,
+        #e75480
+    );
+
+    box-shadow:
+        0 5px 12px rgba(231, 84, 128, 0.18);
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.05);
+}
+
+.edit-btn:active,
+.delete-btn:active {
+    transform: scale(0.96);
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        var(--pink),
+        var(--blue)
+    );
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--pink);
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (min-width: 576px) {
+
+    .form-input {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .form-input label {
+        width: 150px;
+        margin-right: 12px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .form-input input,
+    .form-input textarea,
+    .form-input select {
+        flex: 1;
+    }
+
+    .task-item {
+        width: calc(50% - 11px);
+    }
+}
+
+@media (min-width: 992px) {
+
+    .task-item {
+        width: calc(33.333% - 15px);
+    }
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 575px) {
+
+    body {
+        padding: 25px 12px;
+    }
+
+    .header {
+        font-size: 34px;
+    }
+
+    .project-desc {
+        font-size: 16px;
+    }
+
+    .task-count {
+        margin-bottom: 25px;
+    }
+
+    .task-form {
+        padding: 20px 17px;
+        border-radius: 20px;
+    }
+
+    .form-title {
+        font-size: 22px;
+    }
+
+    .form-btns {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .tasks-title {
+        font-size: 25px;
+    }
+
+    .task-item {
+        padding: 19px;
+    }
+
+    .task-item-title {
+        font-size: 18px;
+    }
+
+    .task-actions {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================
+   Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+
+
+
+
+
+/* =========================
+   Productivity Background
+========================= */
+
+.background-decorations {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================
+   Sticky Notes
+========================= */
+
+.sticky-note {
+    position: absolute;
+
+    width: 125px;
+    min-height: 95px;
+
+    padding: 20px 14px;
+
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.5;
+
+    color: #5d6470;
+
+    border-radius: 4px;
+
+    box-shadow:
+        4px 7px 15px rgba(60, 80, 100, 0.12);
+
+    opacity: 0.7;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    animation: floatingNote 6s ease-in-out infinite;
+}
+
+.sticky-note span {
+    font-size: 18px;
+}
+
+
+/* Note 1 */
+
+.note-one {
+    top: 17%;
+    left: 3%;
+
+    background: #fff1a8;
+
+    transform: rotate(-8deg);
+
+    animation-delay: 0s;
+}
+
+
+/* Note 2 */
+
+.note-two {
+    top: 62%;
+    right: 4%;
+
+    background: #ffd9e6;
+
+    transform: rotate(7deg);
+
+    animation-delay: 1.5s;
+}
+
+
+/* Note 3 */
+
+.note-three {
+    bottom: 7%;
+    left: 7%;
+
+    background: #d8f3ff;
+
+    transform: rotate(5deg);
+
+    animation-delay: 3s;
+}
+
+
+@keyframes floatingNote {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -12px;
+    }
+}
+
+
+/* =========================
+   Floating Check Marks
+========================= */
+
+.floating-check {
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    color: #43a047;
+
+    background: rgba(216, 245, 229, 0.75);
+
+    box-shadow:
+        0 7px 18px rgba(67, 160, 71, 0.12);
+
+    animation: floatingCheck 5s ease-in-out infinite;
+}
+
+.check-one {
+    top: 28%;
+    right: 9%;
+}
+
+.check-two {
+    bottom: 24%;
+    left: 4%;
+
+    animation-delay: 1.5s;
+}
+
+.check-three {
+    top: 9%;
+    left: 12%;
+
+    animation-delay: 3s;
+}
+
+
+@keyframes floatingCheck {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(8deg);
+    }
+}
+
+
+/* =========================
+   Floating Pencils
+========================= */
+
+.floating-pencil {
+    position: absolute;
+
+    font-size: 42px;
+
+    opacity: 0.65;
+
+    filter: drop-shadow(
+        3px 5px 6px rgba(60, 80, 100, 0.12)
+    );
+
+    animation: pencilFloat 7s ease-in-out infinite;
+}
+
+.pencil-one {
+    top: 43%;
+    left: 2%;
+
+    transform: rotate(-25deg);
+}
+
+.pencil-two {
+    bottom: 15%;
+    right: 8%;
+
+    transform: rotate(25deg);
+
+    animation-delay: 2.5s;
+}
+
+
+@keyframes pencilFloat {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -15px;
+    }
+}
+
+
+/* =========================
+   Small Paper Notes
+========================= */
+
+.floating-paper {
+    position: absolute;
+
+    width: 95px;
+    height: 75px;
+
+    padding: 15px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 1px solid rgba(91, 155, 213, 0.15);
+
+    box-shadow:
+        4px 8px 18px rgba(91, 155, 213, 0.1);
+
+    opacity: 0.6;
+
+    transform: rotate(-6deg);
+
+    animation: paperFloat 8s ease-in-out infinite;
+}
+
+.floating-paper div {
+    width: 70%;
+    height: 5px;
+
+    margin-bottom: 8px;
+
+    border-radius: 10px;
+
+    background: #b8dff1;
+}
+
+.paper-one {
+    top: 11%;
+    right: 22%;
+}
+
+.paper-two {
+    bottom: 13%;
+    right: 23%;
+
+    transform: rotate(8deg);
+
+    animation-delay: 2s;
+}
+
+
+@keyframes paperFloat {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -10px;
+    }
+}
+
+
+/* =========================
+   Tiny Stars
+========================= */
+
+.tiny-star {
+    position: absolute;
+
+    font-size: 25px;
+
+    color: #e75480;
+
+    opacity: 0.55;
+
+    animation: starTwinkle 3s ease-in-out infinite;
+}
+
+.star-one {
+    top: 20%;
+    left: 25%;
+}
+
+.star-two {
+    top: 72%;
+    left: 22%;
+
+    animation-delay: 1s;
+}
+
+.star-three {
+    top: 35%;
+    right: 22%;
+
+    animation-delay: 1.8s;
+}
+
+.star-four {
+    bottom: 20%;
+    right: 32%;
+
+    animation-delay: 2.5s;
+}
+
+
+@keyframes starTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 700px) {
+
+    .sticky-note {
+        width: 90px;
+        min-height: 70px;
+
+        padding: 12px 10px;
+
+        font-size: 10px;
+    }
+
+    .sticky-note span {
+        font-size: 14px;
+    }
+
+    .floating-pencil {
+        font-size: 30px;
+    }
+
+    .floating-paper {
+        width: 70px;
+        height: 55px;
+        padding: 10px;
+    }
+
+    .floating-paper div {
+        height: 3px;
+        margin-bottom: 5px;
+    }
+
+    .floating-check {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .tiny-star {
+        font-size: 18px;
+    }
+}
+
