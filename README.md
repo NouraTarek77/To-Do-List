@@ -2,10 +2,10 @@
 
 A simple and modern To Do List web application designed to help users organize and manage their daily tasks.
 
-Features
+✨ Features
 ➕ Add new tasks
 ✏️ Edit existing tasks
-🗑️ Delete tasks
+🗑️ Delete existing tasks
 🎯 Set task priority
 ✅ Mark tasks as completed
 ↩️ Undo completed tasks
@@ -16,12 +16,13 @@ Features
 🎨 Modern and colorful UI
 💾 Save tasks using Local Storage
 🔄 Keep task status after refreshing the page
-Technologies Used
+
+🛠️ Technologies Used
 HTML5
 CSS3
 JavaScript
 Local Storage
-Design
+🎨 Design
 
 The application uses a soft and modern productivity-themed design with:
 
@@ -32,7 +33,7 @@ The application uses a soft and modern productivity-themed design with:
 🎨 Pastel colors
 ✨ Smooth hover and animation effects
 🟢 Visual indicators for completed tasks
-Task Management
+📋 Task Management
 
 Users can manage their tasks easily by:
 
@@ -42,14 +43,14 @@ Deleting tasks.
 Marking tasks as completed when they are finished.
 Undoing the completed status when needed.
 Keeping task completion status saved in Local Storage.
-How to Run
+🚀 How to Run
 Clone the repository.
 Open the project folder.
 Open index.html in your browser.
 
 🔗 Live Demo: https://nouratarek77.github.io/To-Do-List/
 
-Author
+👩‍💻 Author
 Noura Tarek
 
 🔗 GitHub: NouraTarek77
