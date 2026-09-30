@@ -1216,3 +1216,151 @@ body::after {
     }
 }
 
+/* =========================
+   Completed Task
+========================= */
+
+.task-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.task-title-row .task-item-title {
+    margin: 0;
+}
+
+.completed-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    margin-right: 7px;
+
+    border-radius: 50%;
+
+    background: #43a047;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    box-shadow:
+        0 4px 10px rgba(67, 160, 71, 0.2);
+}
+
+.completed-badge {
+    flex-shrink: 0;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: #d8f5e5;
+    color: #27804b;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.task-completed {
+    border-left-color: #43a047;
+
+    background: rgba(248, 255, 250, 0.92);
+}
+
+.task-completed:hover {
+    border-left-color: #43a047;
+
+    box-shadow:
+        0 18px 35px rgba(67, 160, 71, 0.15);
+}
+
+/* Done Button */
+
+.done-btn {
+    border: none;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #66bb6a,
+        #43a047
+    );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+    font-size: 13px;
+
+    box-shadow:
+        0 5px 12px rgba(67, 160, 71, 0.2);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+.done-btn:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 8px 18px rgba(67, 160, 71, 0.28);
+}
+
+.done-btn:active {
+    transform: scale(0.96);
+}
+
+/* Undo Button */
+
+.undo-btn {
+    background: linear-gradient(
+        135deg,
+        #75c9ed,
+        #5b9bd5
+    );
+
+    box-shadow:
+        0 5px 12px rgba(91, 155, 213, 0.2);
+}
+
+.undo-btn:hover {
+    box-shadow:
+        0 8px 18px rgba(91, 155, 213, 0.28);
+}
+
+/* Mobile */
+
+@media (max-width: 575px) {
+
+    .task-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .completed-badge {
+        margin-top: 2px;
+    }
+
+    .done-btn,
+    .edit-btn,
+    .delete-btn {
+        flex: 1;
+    }
+}
