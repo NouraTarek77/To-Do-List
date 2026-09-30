@@ -51,5 +51,5 @@ Open index.html in your browser.
 Author
 Noura Tarek
 
- 🔗 Live Demo: https://nouratarek77.github.io/To-Do-List/
- 🔗GitHub: NouraTarek77
+🔗 Live Demo: https://nouratarek77.github.io/To-Do-List/
+🔗GitHub: NouraTarek77
