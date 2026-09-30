@@ -2,7 +2,7 @@
 
 A simple and modern To Do List web application designed to help users organize and manage their daily tasks.
 
-Features:
+Features
 ➕ Add new tasks
 ✏️ Edit existing tasks
 🗑️ Delete tasks
@@ -16,8 +16,7 @@ Features:
 🎨 Modern and colorful UI
 💾 Save tasks using Local Storage
 🔄 Keep task status after refreshing the page
-
-Technologies Used:
+Technologies Used
 HTML5
 CSS3
 JavaScript
@@ -48,8 +47,9 @@ Clone the repository.
 Open the project folder.
 Open index.html in your browser.
 
+🔗 Live Demo: https://nouratarek77.github.io/To-Do-List/
+
 Author
 Noura Tarek
 
-🔗 Live Demo: https://nouratarek77.github.io/To-Do-List/
-🔗GitHub: NouraTarek77
+🔗 GitHub: NouraTarek77
